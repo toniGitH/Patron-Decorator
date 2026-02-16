@@ -1,7 +1,5 @@
 <?php
 
-namespace RefactoringGuru\Decorator\RealWorld;
-
 /**
  * Interfaz que define el contrato para formatear texto.
  * 
@@ -15,7 +13,7 @@ namespace RefactoringGuru\Decorator\RealWorld;
  * Esta interfaz existe desde el principio porque sabemos que habrá múltiples
  * formas de procesar texto que necesitarán COMBINARSE.
  */
-interface InputFormat
+interface InputFormatInterface
 {
     /**
      * Formatea/procesa un texto y devuelve el resultado.
