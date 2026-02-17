@@ -1,6 +1,8 @@
 <?php
 
-require_once 'InputFormatInterface.php';
+namespace App\Client;
+
+use App\MyApp\InputFormatInterface;
 
 /**
  * CLIENTE
@@ -11,7 +13,11 @@ require_once 'InputFormatInterface.php';
  * Recibe cualquier objeto que implemente InputFormat (componente base o decorado)
  * y llama a formatText() sin saber ni importarle cuántos decoradores hay apilados.
  */
-function displayContent(InputFormatInterface $format, string $text)
+
+class WebsiteClient
 {
-    echo $format->formatText($text);
+    public function displayContent(InputFormatInterface $format, string $text)
+    {
+        echo $format->formatText($text);
+    }
 }

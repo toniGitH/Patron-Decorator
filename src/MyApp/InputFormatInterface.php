@@ -1,5 +1,7 @@
 <?php
 
+namespace App\MyApp;
+
 /**
  * Interfaz que define el contrato para formatear texto.
  * 

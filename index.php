@@ -1,15 +1,19 @@
 <?php
 
-require_once 'AppInput.php';
-require_once 'PlainTextDecorator.php';
-require_once 'DangerousHTMLTagsDecorator.php';
-require_once 'MarkdownDecorator.php';
-require_once 'Client.php';
+require_once 'vendor/autoload.php';
+
+use App\MyApp\AppInput;
+use App\Decorators\DangerousHTMLTagsDecorator;
+use App\Decorators\MarkdownDecorator;
+use App\Decorators\PlainTextDecorator;
+use App\Client\WebsiteClient;
 
 echo "========== PATRÓN DECORATOR - SISTEMA DE FORMATEO DE TEXTO ==========";
 echo "<br>";
 echo "<br>";
 echo "<br>";
+
+
 
 // =============================================================================
 //
@@ -22,6 +26,9 @@ echo "<br>";
 // =============================================================================
 
 echo "--- ESCENARIO A: ADMINISTRADOR DEL SITIO ---\n\n";
+
+// Instanciamos el cliente que utilizará el sistema de formateo:
+$websiteA = new WebsiteClient();
 
 // HTML completo que escribe el administrador
 $adminContent = <<<TEXT
@@ -38,7 +45,7 @@ $processor = new AppInput();
 // Procesar y mostrar resultado (se guarda tal cual, sin cambios)
 echo "Entrada:\n$adminContent\n\n";
 echo "Salida:\n";
-displayContent($processor, $adminContent);
+$websiteA->displayContent($processor, $adminContent);
 echo "\n\n";
 
 
@@ -53,6 +60,9 @@ echo "\n\n";
 // =============================================================================
 
 echo "--- ESCENARIO B: EDITOR DE CONTENIDO CONFIABLE ---\n\n";
+
+// Instanciamos el cliente que utilizará el sistema de formateo:
+$websiteB = new WebsiteClient();
 
 // Texto con HTML de diseño y algún posible script accidental
 $editorContent = <<<TEXT
@@ -73,7 +83,7 @@ $processor = new DangerousHTMLTagsDecorator($textInput);
 // Procesar y mostrar resultado
 echo "Entrada:\n$editorContent\n\n";
 echo "Salida:\n";
-displayContent($processor, $editorContent);
+$websiteB->displayContent($processor, $editorContent);
 echo "\n\n";
 
 
@@ -88,6 +98,9 @@ echo "\n\n";
 // =============================================================================
 
 echo "--- ESCENARIO C: MENSAJES PRIVADOS ---\n\n";
+
+// Instanciamos el cliente que utilizará el sistema de formateo:
+$websiteC = new WebsiteClient();
 
 // Texto que escribe el usuario premium (Markdown profesional)
 $privateMessage = <<<TEXT
@@ -112,7 +125,7 @@ $processor = new MarkdownDecorator($textInput);
 // Procesar y mostrar resultado
 echo "Entrada:\n$privateMessage\n\n";
 echo "Salida:\n";
-displayContent($processor, $privateMessage);
+$websiteC->displayContent($processor, $privateMessage);
 echo "\n\n";
 
 
@@ -127,6 +140,9 @@ echo "\n\n";
 // =============================================================================
 
 echo "--- ESCENARIO D: POSTS DE FORO ---\n\n";
+
+// Instanciamos el cliente que utilizará el sistema de formateo:
+$websiteD = new WebsiteClient();
 
 // Texto que escribe el usuario registrado (Markdown + posible HTML malicioso)
 $forumPost = <<<TEXT
@@ -152,7 +168,7 @@ $processor = new DangerousHTMLTagsDecorator($withMarkdown);
 // Procesar y mostrar resultado
 echo "Entrada:\n$forumPost\n\n";
 echo "Salida:\n";
-displayContent($processor, $forumPost);
+$websiteD->displayContent($processor, $forumPost);
 echo "\n\n";
 
 
@@ -166,11 +182,12 @@ echo "\n\n";
 //
 // =============================================================================
 
-echo "--- ESCENARIO E: COMENTARIOS PÚBLICOS ---";
-echo "<br>";
-echo "<br>";
-echo "<br>";
+echo "--- ESCENARIO E: COMENTARIOS PÚBLICOS ---\n\n";
 
+// Instanciamos el cliente que utilizará el sistema de formateo:
+$websiteE = new WebsiteClient();
+
+// Texto que escribe el usuario anónimo (HTML + posible script malicioso)
 $commentText = <<<TEXT
 ¡Gran artículo!
 Visita <a href="http://spam.com">mi sitio</a>
@@ -185,12 +202,12 @@ $textInput = new AppInput();
 $processor = new PlainTextDecorator($textInput);
 
 // Procesar y mostrar resultado
-echo "Entrada (Literal):<br>";
+echo "Entrada (Literal):\n";
 echo htmlspecialchars($commentText);
-echo "<br><br>";
-echo "Salida:<br>";
-displayContent($processor, $commentText);
-echo "<br><br>";
+echo "\n\n";
+echo "Salida:\n";
+$websiteE->displayContent($processor, $commentText);
+echo "\n\n";
 
 
 // =============================================================================

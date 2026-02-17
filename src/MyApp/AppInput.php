@@ -1,6 +1,8 @@
 <?php
 
-require_once 'InputFormatInterface.php';
+namespace App\MyApp;
+
+use App\MyApp\InputFormatInterface;
 
 /**
  * ¿QUÉ REPRESENTA AppInput EN ESTE EJEMPLO?

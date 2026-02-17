@@ -1,6 +1,8 @@
 <?php
 
-require_once 'AbstractDecorator.php';
+namespace App\Decorators;
+
+use App\Decorators\AbstractDecorator;
 
 /**
  * Decorador Concreto: Elimina TODAS las etiquetas HTML del texto.

@@ -1,6 +1,8 @@
 <?php
 
-require_once 'InputFormatInterface.php';
+namespace App\Decorators;
+
+use App\MyApp\InputFormatInterface;
 
 /**
  * Clase Base Abstracta para todos los decoradores.
