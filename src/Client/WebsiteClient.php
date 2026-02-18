@@ -16,6 +16,10 @@ use App\MyApp\InputFormatInterface;
 
 class WebsiteClient
 {
+    /**
+     * Muestra el contenido procesado.
+     * En este ejemplo, el cliente simplemente imprime el resultado.
+     */
     public function displayContent(InputFormatInterface $format, string $text)
     {
         echo $format->formatText($text);
