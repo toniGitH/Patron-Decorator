@@ -17,11 +17,11 @@ use App\MyApp\InputFormatInterface;
 class WebsiteClient
 {
     /**
-     * Muestra el contenido procesado.
-     * En este ejemplo, el cliente simplemente imprime el resultado.
+     * Procesa y devuelve el contenido utilizando el formato proporcionado.
+     * El cliente es el que "utiliza" la estructura de decoradores.
      */
-    public function displayContent(InputFormatInterface $format, string $text)
+    public function formatForDisplay(InputFormatInterface $format, string $text): string
     {
-        echo $format->formatText($text);
+        return $format->formatText($text);
     }
 }
