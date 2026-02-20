@@ -29,6 +29,7 @@ Para aplicar transformaciones dinámicas, necesitamos `AbstractDecorator`, una c
 *   **Doble Requisito**:
 
     1.  **Cumplir el Contrato**: Debe implementar `InputFormatInterface`.
+
     2.  **Almacenar el Eslabón Anterior**: Guarda en `$inputFormat` el objeto (núcleo u otro decorador) que está envolviendo.
 
 ## 4. Los decoradores concretos
@@ -39,21 +40,21 @@ Cada uno de los decoradores aplica una determinada conversión al texto recibido
 
 ### `DangerousHTMLTagsDecorator`
 
-*   Podemos asociarlo al **escenario B (Editor Confiable)**: el usuario tiene permiso para usar HTML, pero queremos una red de seguridad que elimine scripts o atributos maliciosos de forma quirúrgica.
+*   Podemos asociarlo al **escenario B (editor confiable)**: el usuario tiene permiso para usar HTML, pero queremos una red de seguridad que elimine scripts o atributos maliciosos de forma quirúrgica.
 
 ### `MarkdownDecorator`
 
-*   Podemos asociarlo al **escenario C (Mensajes Privados)**: no se busca seguridad, sino utilidad. Transforma la sintaxis Markdown en etiquetas HTML, cambiando la estructura visual del texto.
+*   Podemos asociarlo al **escenario C (mensajes privados)**: no se busca seguridad, sino utilidad. Transforma la sintaxis Markdown en etiquetas HTML, cambiando la estructura visual del texto.
 
 ### `PlainTextDecorator`
 
-*   Podemos asociarlo al **escenario E (Comentarios Anónimos)**: el grado más radical de filtrado. Se elimina absolutamente cualquier etiqueta HTML, dejando solo el texto plano.
+*   Podemos asociarlo al **escenario E (comentarios anónimos)**: el grado más radical de filtrado. Se elimina absolutamente cualquier etiqueta HTML, dejando solo el texto plano.
 
 Y dado que en este patrón, los diferentes decoradores actúan como capas que pueden superponerse unas sobre otras, puede interesarnos aplicar más de un decorador:
 
 ### Composición: `MarkdownDecorator` + `DangerousHTMLTagsDecorator`
 
-*   Podemos asociarlo al **escenario D (Posts de Foro)**: se combinan dos decoradores. Primero se transforma el Markdown y luego se sanea el resultado. Es un ejemplo perfecto de cómo el patrón permite apilar responsabilidades.
+*   Podemos asociarlo al **escenario D (posts de foro)**: se combinan dos decoradores. Primero se transforma el Markdown y luego se sanea el resultado. Es un ejemplo perfecto de cómo el patrón permite apilar responsabilidades.
 
 ---
 
