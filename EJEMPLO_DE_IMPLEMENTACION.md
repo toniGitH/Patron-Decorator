@@ -16,6 +16,8 @@ Por otro lado, como puede ser que algunos de los usuarios que publiquen contenid
 
 Por todos estos motivos, necesitamos implementar en nuestra web un sistema que nos permita aplicar diferentes filtros y/o conversiones al contenido publicado por los usuarios.
 
+👉🏼 [Volver al README](README.md)
+
 ---
 ---
 
@@ -241,3 +243,5 @@ Necesitamos un sistema que:
 2. **Aplique diferentes reglas** según dónde se publique ese contenido
 3. **Sea fácil de mantener** (si mañana decides permitir BBCode, que sea simple añadirlo)
 4. **Sea flexible** (poder combinar reglas en diferentes órdenes)
+
+👉🏼 [Volver al README](README.md)

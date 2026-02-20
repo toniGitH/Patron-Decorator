@@ -1,6 +1,8 @@
 # Entendiendo el Patrón Decorator
 
-Este documento resume la lógica fundamental del patrón Decorator tal como se aplica en nuestro sistema de formateo de texto, ordenado de menor a mayor grado de transformación del texto original.
+Este documento resume la lógica fundamental del patrón Decorator tal como se aplica en nuestro ejemplo de sistema de formateo de texto.
+
+👉🏼 [Volver al README](README.md)
 
 ---
 
@@ -58,6 +60,8 @@ Y dado que en este patrón, los diferentes decoradores actúan como capas que pu
 
 ---
 
-## Conclusión Ejecutiva
+## 6. La ventaja del patrón Decorator
 
 Esta arquitectura nos permite que el sistema sea **abierto a la extensión** (podemos añadir el `Escenario F` mañana mismo) pero **cerrado a la modificación** (no tenemos que tocar el código del Administrador para añadir filtros a los usuarios anónimos).
+
+👉🏼 [Volver al README](README.md)
