@@ -21,6 +21,8 @@ Repositorio creado para explicar el patrón **Decorator** y su implementación m
     </li>
     <li>🧪 <a href="#-ejemplo-de-implementación-sistema-de-formateo-de-contenido-para-web">Ejemplo de implementación: Sistema de formateo de contenido para web</a>
       <ul>
+        <li>🔎 <a href="#-explicacion-detallada-del-ejemplo">Explicacion detallada del ejemplo</a></li>
+        <li>🤔 <a href="#-entendiendo-el-patrón-decorator">Entendiendo el patrón Decorator</a></li>
         <li>👉🏼 <a href="#-identificación-de-los-principales-archivos-del-ejemplo">Identificación de los principales archivos del ejemplo</a></li>
       </ul>
     </li>
@@ -131,13 +133,15 @@ Gracias al uso de una interfaz común, el cliente no necesita saber si está tra
 
 ## 🧪 Ejemplo de implementación: Sistema de formateo de contenido para web
 
+### 🔎 Explicación detallada del ejemplo
+
 Dado el detalle con el que se explica el ejemplo creado para visualizar el patrón Decorator, se ha decidido crear un documento específico para ello.
 
 👉🏼 [Explicación detallada del ejemplo](EJEMPLO_DE_IMPLEMENTACION.md)
 
 <br>
 
-## 🤔 Entendiendo el patrón Decorator
+### 🤔 Entendiendo el patrón Decorator
 
 En este documento encontrarás una explicación más detallada de cómo encaja el patrón Decorator en el ejemplo creado:
 
