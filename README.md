@@ -74,19 +74,51 @@ Son las clases (como `MarkdownDecorator`, `DangerousHTMLTagsDecorator` o `PlainT
 
 ### 👍🏼 ¿Cuándo usar el patrón Decorator?
 
-#### 📌 xxx
+Su aplicación es ideal en situaciones donde la herencia tradicional se vuelve rígida o ineficiente.
 
+Este patrón permite **modificar el comportamiento en tiempo de ejecución**. Mientras que la herencia es estática (se define al programar), el Decorator permite decidir qué funciones añadir y en qué orden mientras la aplicación ya está corriendo, adaptándose dinámicamente a las necesidades del momento.
 
-#### 📌 xxx
+Podemos identificar varios escenarios clave donde nos conviene usar este patrón.
+
+#### 📌 Extensión de Funcionalidades Existentes
+
+Cuando ya disponemos de una clase que realiza una tarea concreta (ej. un `Notificador` de emails) y necesitamos añadirle capacidades adicionales (ej. enviar también por SMS, Slack o Facebook) sin modificar la clase original. Es la solución perfecta para evitar la **explosión combinatoria de subclases**.
+
+#### 📌 "Objetivización" de contenidos no decorables
+
+Como hemos visto en nuestro proyecto, a veces queremos decorar algo que no es un objeto por naturaleza (como un `string` o un flujo de datos crudos). Usamos el patrón para crear una **clase base portadora** que "envuelve" ese dato, convirtiéndolo en un objeto que permite iniciar una cadena de procesamiento modular.
+
+#### 📌 Clases "Final" o selladas
+
+Cuando trabajas con librerías externas donde las clases están marcadas como `final` (no se pueden heredar). El Decorator es la única forma de extender su comportamiento envolviéndolas en un wrapper propio.
 
 <br>
 
 ### 🎯 Principales beneficios de aplicar el patrón Decorator
 
-#### 📌 xxx
+El uso del Decorator no solo resuelve problemas de extensibilidad, sino que mejora la calidad del código siguiendo las mejores prácticas de la **Programación Orientada a Objetos (POO)**.
 
+#### 📌 Cumplimiento de Principios SOLID
 
-#### 📌 xxx
+*   **Principio de Responsabilidad Única (SRP)**
+
+Permite desglosar una clase monolítica que hace muchas cosas en varias clases pequeñas y especializadas. Cada decorador hace una sola cosa (ej. uno filtra HTML, otro convierte Markdown).
+
+*   **Principio de Abierto/Cerrado (OCP)**:
+
+Puedes introducir nuevos decoradores y funcionalidades sin tocar el código de las clases existentes ni el de los clientes que las usan. El sistema está "cerrado" a modificación pero "abierto" a extensión.
+
+#### 📌 Composición vs. Herencia
+
+Favorece la **composición sobre la herencia**. La herencia es una relación de "ser" (es estática), mientras que la composición/decoración es una relación de "tener" y "envolver" (es dinámica). Esto hace que el sistema sea mucho más flexible y menos propenso a errores de jerarquías complejas.
+
+#### 📌 Modularidad y Reutilización
+
+Los decoradores son piezas independientes que pueden combinarse de infinitas maneras. Un decorador de "Seguridad" configurado una vez puede reutilizarse para decorar un sistema de archivos, una base de datos o un simple campo de texto.
+
+#### 📌 Transparencia para el Cliente
+
+Gracias al uso de una interfaz común, el cliente no necesita saber si está tratando con el objeto básico o con un objeto envuelto en diez capas de decoración. Esto reduce el acoplamiento y facilita el mantenimiento.
 
 
 <br>
@@ -118,19 +150,19 @@ En este documento encontrarás una explicación más detallada de cómo encaja e
 
 ###### 📁 Carpeta MyApp: el núcleo de la aplicación
 
-    - `AppInput.php`: 
-    - `InputFormatInterface.php`: 
+    - `AppInput.php`: componente concreto que sirve como base de la decoración (convierte el texto en objeto "decorable").
+    - `InputFormatInterface.php`: interfaz común que garantiza que el cliente pueda tratar a todos por igual.
 
 ###### 📁 Carpeta Decorators: los decoradores
 
-    - `AbstractDecorator.php`: 
-    - `MarkdownDecorator.php`: 
-    - `DangerousHTMLTagsDecorator.php`: 
-    - `PlainTextDecorator.php`: 
+    - `AbstractDecorator.php`: clase abstracta que estandariza la estructura de todos los decoradores.
+    - `MarkdownDecorator.php`: decorador concreto que transforma sintaxis Markdown en código HTML.
+    - `DangerousHTMLTagsDecorator.php`: decorador concreto que elimina etiquetas y atributos HTML peligrosos.
+    - `PlainTextDecorator.php`: decorador concreto que limpia cualquier rastro de HTML dejando solo texto plano.
 
 #### 📁 Carpeta Client
 
- - `WebsiteClient.php`: 
+ - `WebsiteClient.php`: aplicación cliente que depende de la abstracción para procesar el contenido.
 
 #### ➡️ Flujo de ejecución
 
