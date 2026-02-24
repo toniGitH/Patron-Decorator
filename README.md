@@ -17,6 +17,7 @@ Repositorio creado para explicar el patrón **Decorator** y su implementación m
         <li>🛂 <a href="#-elementos-típicos-que-encontramos-en-un-patrón-decorator">Elementos típicos que encontramos en un patrón Decorator</a></li>
         <li>👍🏼 <a href="#-cuándo-usar-el-patrón-decorator">¿Cuándo usar el patrón Decorator?</a></li>
         <li>🎯 <a href="#-principales-beneficios-de-aplicar-el-patrón-decorator">Principales beneficios de aplicar el patrón Decorator</a></li>
+        <li>📊 <a href="#-comparativa-builder-vs-decorator">Comparativa Builder vs Decorator</a></li>
       </ul>
     </li>
     <li>🧪 <a href="#-ejemplo-de-implementación-sistema-de-formateo-de-contenido-para-web">Ejemplo de implementación: Sistema de formateo de contenido para web</a>
@@ -82,7 +83,7 @@ Este patrón permite **modificar el comportamiento en tiempo de ejecución**. Mi
 
 Podemos identificar varios escenarios clave donde nos conviene usar este patrón.
 
-#### 📌 Extensión de Funcionalidades Existentes
+#### 📌 Extensión de funcionalidades existentes
 
 Cuando ya disponemos de una clase que realiza una tarea concreta (ej. un `Notificador` de emails) y necesitamos añadirle capacidades adicionales (ej. enviar también por SMS, Slack o Facebook) sin modificar la clase original. Es la solución perfecta para evitar la **explosión combinatoria de subclases**.
 
@@ -122,6 +123,11 @@ Los decoradores son piezas independientes que pueden combinarse de infinitas man
 
 Gracias al uso de una interfaz común, el cliente no necesita saber si está tratando con el objeto básico o con un objeto envuelto en diez capas de decoración. Esto reduce el acoplamiento y facilita el mantenimiento.
 
+<br>
+
+### 📊 Comparativa Builder vs Decorator
+
+👉🏼 [Comparativa Builder vs Decorator](COMPARACION_BUILDER_VS_DECORATOR.md)
 
 <br>
 
