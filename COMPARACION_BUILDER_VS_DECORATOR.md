@@ -4,27 +4,29 @@ Decidí abordar esta comparación porque, en una primera aproximación, ambos pa
 
 Sin embargo, sus propósitos y estructuras son fundamentalmente diferentes, por lo que he creido conveniente mantener esta guía para identificar sus diferencias y entender cuándo utilizar cada uno de ellos.
 
-## 🎯 El Objetivo (¿Qué busco?)
+👉🏼 [Volver al README](README.md)
 
-*   **Builder (Patrón Creacional)**: El objetivo es **CONSTRUIR** un objeto complejo. Se centra en el **proceso de creación** paso a paso, ocultando la complejidad de cómo se ensamblan las piezas. Al final, se obtiene una instancia lista para usar.
+## 🎯 Objetivo: qué busca cada patrón
 
-*   **Decorator (Patrón Estructural)**: El objetivo es **EXTENDER** la funcionalidad de un objeto que ya existe. Se centra en el **comportamiento dinámico**. No crea un objeto nuevo desde cero, sino que "viste" o añade capacidades a uno ya existente.
+*   **Builder (Patrón Creacional)**: su objetivo es **CONSTRUIR** un objeto complejo. Se centra en el **proceso de creación** paso a paso, ocultando la complejidad de cómo se ensamblan las piezas. Al final, se obtiene una instancia lista para usar.
 
-## 🧩 La Estructura (¿Cómo se organiza?)
+*   **Decorator (Patrón Estructural)**: su objetivo es **EXTENDER** la funcionalidad de un objeto que ya existe. Se centra en el **comportamiento dinámico**. No crea un objeto nuevo desde cero, sino que "viste" o añade capacidades a uno ya existente.
 
-*   **Builder**: Es un proceso **lineal y atómico**. Se invocan métodos secuencialmente (`paso1()`, `paso2()`, etc.) y finalmente se obtiene un **único objeto final** (el producto). Si el proceso se interrumpe, el objeto suele estar incompleto.
+## 🧩 Estructura: cómo se organiza cada patrón
 
-*   **Decorator**: Es una estructura **recursiva (capas de cebolla)**. Cada decorador envuelve al anterior. No es un solo objeto con muchas propiedades, sino una **pila de objetos independientes** donde cada uno delega la ejecución al que tiene debajo.
+*   **Builder**: es un proceso **lineal y atómico**. Se invocan métodos secuencialmente (`paso1()`, `paso2()`, etc.) y finalmente se obtiene un **único objeto final** (el producto). Si el proceso se interrumpe, el objeto suele estar incompleto.
 
-## 🎓 Analogías Didácticas
+*   **Decorator**: es una estructura **recursiva (capas de cebolla)**. Cada decorador envuelve al anterior. No es un solo objeto con muchas propiedades, sino una **pila de objetos independientes** donde cada uno delega la ejecución al que tiene debajo.
 
-- #### 🍕 El Builder: Construir una Pizza
+## 🎓 Analogías didácticas
+
+- #### 🍕 Builder: construir una pizza
     Necesitas la masa, luego el tomate, luego el queso y finalmente el horneado. Un "Director" conoce la receta. Al final el cliente recibe **una pizza**. El enfoque es el montaje y el orden de los ingredientes.
 
-- #### 🥸 El Decorator: Disfrazar a una Persona
+- #### 🥸 Decorator: disfrazar a una persona
     Tienes a una persona (objeto base). Le pones una capa (decorador 1). Encima le pones una máscara (decorador 2). Luego una espada (decorador 3). La persona sigue siendo funcional (puede caminar o hablar), pero ahora tiene "poderes" o aspectos adicionales. Los disfraces se pueden añadir o quitar en tiempo de ejecución sin reconstruir a la persona.
 
-## ⚠️ Diferencias Técnicas Clave
+## ⚠️ Diferencias técnicas clave
 
 | Característica | Builder | Decorator |
 | :--- | :--- | :--- |
@@ -39,3 +41,5 @@ Sin embargo, sus propósitos y estructuras son fundamentalmente diferentes, por 
 *   Usa el **Builder** cuando tengas un objeto que requiere una configuración compleja y larga, con muchas partes opcionales pero que, una vez montadas, forman una unidad estática.
 
 *   Usa el **Decorator** cuando necesites añadir o quitar funcionalidades a un objeto de forma dinámica, permitiendo combinaciones infinitas de comportamientos que el objeto base no puede (ni debe) prever.
+
+👉🏼 [Volver al README](README.md)
